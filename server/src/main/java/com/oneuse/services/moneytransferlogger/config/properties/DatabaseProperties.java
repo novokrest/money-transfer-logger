@@ -3,7 +3,7 @@ package com.oneuse.services.moneytransferlogger.config.properties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.PropertySource;
 
-@PropertySource("classpath:database.properties")
+@PropertySource("classpath:database-${spring.profiles.active}.properties")
 @ConfigurationProperties(prefix = "database")
 public class DatabaseProperties {
 
