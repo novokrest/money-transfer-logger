@@ -1,0 +1,46 @@
+group 'com.oneuse.sevices'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.9.RELEASE")
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    compile 'org.springframework.boot:spring-boot-starter-web'
+    compile 'com.fasterxml.jackson.module:jackson-module-parameter-names'
+    compile 'com.fasterxml.jackson.datatype:jackson-datatype-jdk8'
+    compile 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
+
+    compile 'org.springframework.boot:spring-boot-starter-data-rest'
+    compile 'org.springframework.boot:spring-boot-starter-data-jpa'
+    compile 'org.hibernate:hibernate-core:5.2.1.Final'
+    compile 'mysql:mysql-connector-java'
+    compile 'org.flywaydb:flyway-core'
+
+    compile 'com.google.guava:guava:19.0'
+    compile 'org.apache.commons:commons-lang3:3.7'
+
+    testCompile 'org.springframework.boot:spring-boot-starter-test'
+    testCompile 'junit:junit'
+}
+
+jar {
+    baseName = 'money-transfer-logger'
+    version =  '1.0.0'
+}

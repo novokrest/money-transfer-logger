@@ -1,0 +1,9 @@
+CREATE TABLE transfer (
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    amount BIGINT NOT NULL,
+    source TEXT NOT NULL,
+    destination TEXT NOT NULL,
+    created_dt TIMESTAMP NOT NULL DEFAULT NOW(),
+    updated_dt TIMESTAMP NOT NULL DEFAULT NOW(),
+    status TEXT NOT NULL
+);
