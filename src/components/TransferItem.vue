@@ -1,21 +1,21 @@
 <template>
-    <div class="row">
-      <div class="col-sm">{{ transfer.amount }}</div>
-      <div class="col-sm">{{ transfer.source }}</div>
-      <div class="col-sm">{{ transfer.destination }}</div>
-      <div class="col-sm">{{ transfer.createdDateTime }}</div>
-      <div class="col-sm">{{ transfer.lastUpdatedDateTime }}</div>
-      <div class="col-sm">{{ transfer.status }}</div>
+    <tr>
+      <td class="">{{ transfer.amount }}</td>
+      <td class="">{{ transfer.source }}</td>
+      <td class="">{{ transfer.destination }}</td>
+      <td class="">{{ transfer.createdDateTime }}</td>
+      <td class="">{{ transfer.lastUpdatedDateTime }}</td>
+      <td class="">{{ transfer.status }}</td>
     </tr>
 </template>
 
 <script>
 export default {
-    props: {
-        transfer: {
-            type: Object,
-            required: true
-        }
+  props: {
+    transfer: {
+      type: Object,
+      required: true
     }
+  }
 }
 </script>
