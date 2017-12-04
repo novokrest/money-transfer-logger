@@ -2,7 +2,6 @@ const config = require('./config');
 
 const path = require('path');
 const express = require('express');
-const requestProxy = require('express-request-proxy');
 const proxy = require('express-http-proxy');
 
 const app = express();
