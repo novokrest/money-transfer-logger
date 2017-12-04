@@ -12,6 +12,7 @@ app.use(express.static(path.join(__dirname)));
 
 const MOCK_TRANSFERS = [
   {
+    id: 1,
     amount: 10000,
     source: 'Sberbank',
     destination: 'Alfa-bank',
@@ -20,6 +21,7 @@ const MOCK_TRANSFERS = [
     status: 'processing'
   },
   {
+    id: 2,
     amount: 20000,
     source: 'Raiffaisen',
     destination: 'Alfa-bank',
@@ -28,6 +30,7 @@ const MOCK_TRANSFERS = [
     status: 'done'
   },
   {
+    id: 3,
     amount: 30000,
     source: 'VTB24',
     destination: 'Sberbank',
@@ -52,8 +55,16 @@ app.get('/transfers', (req, res) => {
 */
 app.post('/transfers', (req, res) => {
   const transfer = req.body;
+  transfer.id = MOCK_TRANSFERS.length + 1;
   console.log('Transfer to add:', transfer);
   MOCK_TRANSFERS.push(transfer);
+  res.status(200).send();
+});
+
+app.delete('/transfers/:id', (req, res) => {
+  const id = req.params.id;
+  console.log('Transfer to remove:', id)
+  MOCK_TRANSFERS.splice(id - 1, 1);
   res.status(200).send();
 });
 

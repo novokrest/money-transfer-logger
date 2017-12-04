@@ -7,6 +7,7 @@ export default {
       .then(res => res.json())
       .then(data => {
         return _.map(data._embedded.transfers, transfer => ({
+          id: transfer.id,
           amount: transfer.amount,
           source: transfer.source,
           destination: transfer.destination,
@@ -18,8 +19,11 @@ export default {
   },
 
   postTransfer (data) {
-    return new Promise(resolve => setTimeout(resolve, 1000))
-      .then(() => this._post('transfers', data))
+    return this._post('transfers', data)
+  },
+
+  deleteTransfer (id) {
+    return this._delete(`transfers/${id}`)
   },
 
   _get (relativeUrl) {
@@ -39,6 +43,12 @@ export default {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(data)
+    })
+  },
+
+  _delete (relativeUrl) {
+    return fetch(this._buildUrl(relativeUrl), {
+      method: 'delete'
     })
   },
 

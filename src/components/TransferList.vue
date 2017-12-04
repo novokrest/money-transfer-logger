@@ -6,9 +6,10 @@
       <div class="bottom-buffer" />
       <div v-if="transfers.length">
         <h2>History</h2>
-        <table class="table table-striped table-hover text-center">
+        <table class="table history-table table-striped table-hover text-center">
           <thead>
             <tr>
+                <th>#</th>
                 <th>Amount</th>
                 <th>Source</th>
                 <th>Destination</th>
@@ -24,6 +25,7 @@
               :key="transfer.id"
               :transfer="transfer"
               @statusChanged="changeStatus"
+              @transferRemoved="onTransferRemoved"
             />
           </tbody>
         </table>
@@ -62,6 +64,11 @@ export default {
       this.fetchTransfers()
     },
 
+    onTransferRemoved (transferId) {
+      console.log(`Transfer was removed: ${transferId}`)
+      this.fetchTransfers()
+    },
+
     fetchTransfers () {
       api.getTransfers().then(transfers => {
         console.log('Fetched transfers:', transfers)
@@ -76,7 +83,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 .no-transfer-message {
     text-align: center;
 }
@@ -90,8 +97,14 @@ h2 {
     margin-bottom: 20px;
 }
 
-.table th {
-   text-align: center;   
+.history-table.table>tbody>tr>td, 
+.history-table.table>tbody>tr>th, 
+.history-table.table>tfoot>tr>td, 
+.history-table.table>tfoot>tr>th, 
+.history-table.table>thead>tr>td, 
+.history-table.table>thead>tr>th {
+  text-align: center;   
+  vertical-align: middle;
 }
 
 .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
