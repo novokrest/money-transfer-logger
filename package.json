@@ -8,6 +8,7 @@
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
     "server": "node server/server.js",
+    "prod": "node server-prod.js",
     "unit": "jest --config test/unit/jest.conf.js --coverage",
     "e2e": "node test/e2e/runner.js",
     "test": "npm run unit && npm run e2e",
@@ -17,7 +18,11 @@
   "dependencies": {
     "bootstrap": "^3.3.7",
     "dateformat": "^3.0.2",
+    "express-http-proxy": "^1.1.0",
+    "express-request-proxy": "^2.0.0",
     "jquery": "^3.2.1",
+    "lodash": "^4.17.4",
+    "node-fetch": "^1.7.3",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },
