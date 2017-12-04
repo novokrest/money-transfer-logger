@@ -1,15 +1,25 @@
+import _ from 'lodash'
+import dateFormat from 'dateformat'
+
 export default {
   getTransfers () {
-    return this._get('transfers/list')
+    return this._get('transfers')
       .then(res => res.json())
       .then(data => {
-        return data.result.transfers
+        return _.map(data._embedded.transfers, transfer => ({
+          amount: transfer.amount,
+          source: transfer.source,
+          destination: transfer.destination,
+          createdDt: dateFormat(Date.parse(transfer.createdDt), 'yyyy-mm-dd HH:MM'),
+          updatedDt: dateFormat(Date.parse(transfer.updatedDt), 'yyyy-mm-dd HH:MM'),
+          done: transfer.status === 'SUCCESS'
+        }))
       })
   },
 
   postTransfer (data) {
     return new Promise(resolve => setTimeout(resolve, 1000))
-      .then(() => this._post('transfers/add', data))
+      .then(() => this._post('transfers', data))
   },
 
   _get (relativeUrl) {

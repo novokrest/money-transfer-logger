@@ -101,7 +101,13 @@ export default {
       this.saving = true
       this.btnTitle = 'Saving'
       this.errorMessage = ''
-      const transfer = this.transfer
+      const transfer = {
+        amount: this.transfer.amount,
+        source: this.transfer.source,
+        destination: this.transfer.destination,
+        createdDt: `${this.transfer.issuedDate}T${this.transfer.issuedTime}:00.000+0300`,
+        status: this.transfer.done ? 'SUCCESS' : 'PROCESSING'
+      }
       console.log('Saving transfer:', transfer)
       api.postTransfer(transfer).then(data => {
         this.saving = false

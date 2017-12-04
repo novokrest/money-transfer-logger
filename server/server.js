@@ -37,11 +37,11 @@ const MOCK_TRANSFERS = [
   },
 ];
 
-app.get('/transfers/list', (req, res) => {
+app.get('/transfers', (req, res) => {
   const transfers = MOCK_TRANSFERS;
   console.log('Return transfers:', transfers);
   res.status(200).json({
-    result: {
+    _embedded: {
       transfers: transfers
     }
   });
@@ -50,7 +50,7 @@ app.get('/transfers/list', (req, res) => {
 /*
 * Define post route for creating new reviews
 */
-app.post('/transfers/add', (req, res) => {
+app.post('/transfers', (req, res) => {
   const transfer = req.body;
   console.log('Transfer to add:', transfer);
   MOCK_TRANSFERS.push(transfer);

@@ -6,7 +6,7 @@
       <div class="bottom-buffer" />
       <div v-if="transfers.length">
         <h2>History</h2>
-        <table class="table table-striped table-hover">
+        <table class="table table-striped table-hover text-center">
           <thead>
             <tr>
                 <th>Amount</th>
@@ -14,7 +14,7 @@
                 <th>Destination</th>
                 <th>Created</th>
                 <th>Updated</th>
-                <th>Status</th>
+                <th>Done</th>
                 <th></th>
             </tr>
           </thead>
@@ -88,6 +88,10 @@ div.bottom-buffer {
 h2 {
     text-align: center;
     margin-bottom: 20px;
+}
+
+.table th {
+   text-align: center;   
 }
 
 .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
