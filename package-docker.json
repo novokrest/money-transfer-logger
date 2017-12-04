@@ -1,0 +1,15 @@
+{
+  "name": "money-transfer-logger",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "prod": "node server-prod.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.2",
+    "express-http-proxy": "^1.1.0"
+  }
+}
