@@ -10,7 +10,7 @@
         <input v-model="transfer.done" type="checkbox" />
       </td>
       <td>
-        <button @click="remove" type="button" class="btn btn-danger">Remove</button>
+        <button @click="remove" type="button" class="btn btn-warning">Remove</button>
       </td>
     </tr>
 </template>
